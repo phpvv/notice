@@ -401,7 +401,7 @@ final class Notice {
         try {
             // defend from recursion - off all mailers
             $mailers = $senders;
-            $senders = null;
+            $senders = [];
 
             if (!$message) $message = $this->message();
             if (!$subject) {

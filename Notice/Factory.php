@@ -108,10 +108,7 @@ class Factory {
      * @return Notice
      */
     public function fromException(\Throwable $e, int $status = null, int $code = null): Notice {
-        $message = (string)$e->getMessage();
-        if (!$message && class_exists(\VV\Exception\Core::class)) {
-            $message = (string)$e->getMessage() ?: \VV\Exception\Core::messageFromClassName($e);
-        }
+        $message = (string)$e->getMessage() ?: get_class($e);
 
         if (!$code) {
             $code = $e->getCode();
